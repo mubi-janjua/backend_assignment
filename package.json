@@ -1,16 +1,14 @@
 {
-  "name": "objection-tutorial",
+  "name": "backend_assignment",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "make-migration": "npx knex migrate:make init --migrations-directory db/migrations",
-    "dev": "npm run migrate && npm run seed & nodemon index.js",
-    "seed": "npx knex seed:run --knexfile=./db/knexfile.js",
-    "make-seed": "npx knex seed:make new-seed --knexfile ./db/knexfile.js",
+    "make-migration": "npx knex migrate:make --migrations-directory db/migrations",
+    "start": "nodemon src/index.js",
     "migrate": "npx knex migrate:latest --knexfile ./db/knexfile.js",
-    "down": "npx knex migrate:down --knexfile ./db/knexfile.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "consumer": "node ./kafka_implementation/consumer/index.js",
+    "producer": "node ./kafka_implementation/producer/index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +17,12 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "avsc": "^5.7.3",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "kafka-node": "^5.0.0",
+    "kafkajs": "^1.15.0",
     "knex": "^0.21.16",
     "objection": "^2.2.12",
     "pg": "^8.5.1"
